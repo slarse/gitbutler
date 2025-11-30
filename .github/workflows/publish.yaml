@@ -82,7 +82,7 @@ jobs:
         include:
           - platform: ubuntu-22.04 # [linux, x64]
             target: ''
-          - platform: ubuntu-22.04-arm # [linux, ARM64]
+          - platform: ubuntu-24.04 # [linux, ARM64]
             target: ''
 
     runs-on: ${{ matrix.platform }}
