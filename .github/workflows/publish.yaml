@@ -32,8 +32,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
-        with:
-          token: ${{ secrets.PAT_JUNON }}
       - name: Consume input variables
         shell: bash
         if: ${{ !github.event.workflow_run }}
@@ -111,8 +109,6 @@ jobs:
           echo "OPENSSL_SRC_PERL=$((where.exe perl)[0])" | Out-File -FilePath $env:GITHUB_ENV -Append -Encoding utf8
 
       - uses: actions/checkout@v6
-        with:
-          token: ${{ secrets.PAT_JUNON }} # custom token here so that we can push tags later
       - name: Set Cargo build target to ${{ matrix.target }}
         shell: bash
         if: matrix.target != ''
