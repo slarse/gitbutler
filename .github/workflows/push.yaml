@@ -30,10 +30,12 @@ jobs:
         with:
           filters: |
             workflows: &workflows
+              - '.github/workflows/**'
               - '.github/actions/**'
             docs:
               - '**/*.md'
             node:
+              - *workflows
               - 'apps/**'
               - 'packages/**'
               - 'package.json'
@@ -41,6 +43,7 @@ jobs:
             ui:
               - 'packages/ui/**'
             common-rust: &rust
+              - *workflows
               - 'Cargo.lock'
               - 'Cargo.toml'
             rust: &any-rust
@@ -49,7 +52,7 @@ jobs:
 
   prettier:
     needs: changes
-    if: ${{ needs.changes.outputs.node == 'false' &&  needs.changes.outputs.docs == 'true' }}
+    if: ${{ needs.changes.outputs.node == 'true' || needs.changes.outputs.docs == 'true' }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
