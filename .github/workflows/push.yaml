@@ -29,12 +29,10 @@ jobs:
         with:
           filters: |
             workflows: &workflows
-              - '.github/workflows/**'
               - '.github/actions/**'
             docs:
               - '**/*.md'
             node:
-              - *workflows
               - 'apps/**'
               - 'packages/**'
               - 'package.json'
@@ -42,7 +40,6 @@ jobs:
             ui:
               - 'packages/ui/**'
             common-rust: &rust
-              - *workflows
               - 'Cargo.lock'
               - 'Cargo.toml'
             rust: &any-rust
