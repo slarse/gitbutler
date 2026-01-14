@@ -20,6 +20,7 @@ jobs:
       node: ${{ steps.filter.outputs.node }}
       rust: ${{ steps.filter.outputs.rust }}
       ui: ${{ steps.filter.outputs.ui }}
+      docs: ${{ steps.filter.outputs.docs }}
     steps:
       - uses: actions/checkout@v6
         with:
