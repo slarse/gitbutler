@@ -51,7 +51,7 @@ jobs:
 
   prettier:
     needs: changes
-    if: ${{ needs.changes.outputs.node == 'false' &&  needs.changes.outputs.docs == 'true'}}
+    if: ${{ needs.changes.outputs.node == 'false' &&  needs.changes.outputs.docs == 'true' }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
