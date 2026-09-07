@@ -22,7 +22,7 @@ permissions:
 
 jobs:
   changes:
-    runs-on: depot-ubuntu-24.04
+    runs-on: depot-ubuntu-24.04-4
     outputs:
       node: ${{ steps.filter.outputs.node }}
       rust: ${{ steps.filter.outputs.rust }}
@@ -84,7 +84,7 @@ jobs:
   prettier:
     needs: changes
     if: ${{ needs.changes.outputs.node == 'true' || needs.changes.outputs.docs == 'true' }}
-    runs-on: depot-ubuntu-24.04
+    runs-on: depot-ubuntu-24.04-4
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
@@ -95,7 +95,7 @@ jobs:
   lint-node:
     needs: changes
     if: ${{ needs.changes.outputs.node == 'true' }}
-    runs-on: depot-ubuntu-24.04
+    runs-on: depot-ubuntu-24.04-4
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
@@ -106,7 +106,7 @@ jobs:
   check-node:
     needs: changes
     if: ${{ needs.changes.outputs.node == 'true' }}
-    runs-on: depot-ubuntu-24.04
+    runs-on: depot-ubuntu-24.04-4
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
@@ -117,7 +117,7 @@ jobs:
   unittest-node:
     needs: changes
     if: ${{ needs.changes.outputs.node == 'true' }}
-    runs-on: depot-ubuntu-24.04
+    runs-on: depot-ubuntu-24.04-4
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
@@ -139,7 +139,7 @@ jobs:
   but-sdk-build-check:
     needs: changes
     if: ${{ needs.changes.outputs.but_sdk == 'true' }}
-    runs-on: depot-ubuntu-24.04
+    runs-on: depot-ubuntu-24.04-4
     env:
       CARGO_TERM_COLOR: always
     steps:
@@ -172,7 +172,7 @@ jobs:
   cargo-machete:
     needs: changes
     if: ${{ needs.changes.outputs.rust == 'true' }}
-    runs-on: depot-ubuntu-24.04
+    runs-on: depot-ubuntu-24.04-4
     permissions:
       contents: read
     steps:
@@ -187,7 +187,7 @@ jobs:
   cargo-deny:
     needs: changes
     if: ${{ needs.changes.outputs.rust == 'true' }}
-    runs-on: depot-ubuntu-24.04
+    runs-on: depot-ubuntu-24.04-4
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
@@ -199,7 +199,7 @@ jobs:
   cargo-doc:
     needs: changes
     if: ${{ needs.changes.outputs.rust == 'true' }}
-    runs-on: depot-ubuntu-24.04
+    runs-on: depot-ubuntu-24.04-4
     env:
       CARGO_TERM_COLOR: always
       RUSTDOCFLAGS: -D warnings
@@ -220,7 +220,7 @@ jobs:
   rust-test:
     needs: changes
     if: ${{ needs.changes.outputs.rust == 'true' }}
-    runs-on: depot-ubuntu-24.04
+    runs-on: depot-ubuntu-24.04-4
     env:
       CARGO_TERM_COLOR: always
       GITBUTLER_TESTS_NO_CLEANUP: "1"
@@ -284,7 +284,7 @@ jobs:
       - cargo-machete
       - cargo-doc
       - but-sdk-build-check
-    runs-on: depot-ubuntu-24.04
+    runs-on: depot-ubuntu-24.04-4
     env:
       CARGO_TERM_COLOR: always
     steps:
@@ -296,7 +296,7 @@ jobs:
 
   # Check that all `actions/checkout` in CI jobs have `persist-credentials: false`.
   check-no-persist-credentials:
-    runs-on: depot-ubuntu-24.04
+    runs-on: depot-ubuntu-24.04-4
 
     env:
       GLOB: .github/workflows/*.@(yaml|yml) .depot/workflows/*.@(yaml|yml)
@@ -328,7 +328,7 @@ jobs:
   lite-e2e:
     needs: changes
     if: ${{ needs.changes.outputs.lite_e2e == 'true' }}
-    runs-on: depot-ubuntu-24.04
+    runs-on: depot-ubuntu-24.04-4
     timeout-minutes: 30
     permissions:
       contents: read
